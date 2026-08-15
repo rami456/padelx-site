@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Babolat Technical Viper 3.0 — PadelX</title>
+  <style>
+    /* ==========================================================================
+       PadelX Product Detail Page — Futuristic Dark Mode CSS
+       ========================================================================== */
+    :root {
+      --bg-dark: #121212;
+      --bg-card: #1e1e1e;
+      --bg-input: #2a2a2a;
+      --text-main: #ffffff;
+      --text-muted: #a0a0a0;
+      --accent-neon: #00ff66;
+      --accent-neon-hover: #00cc52;
+      --border-color: #333333;
+      --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --radius: 8px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    a {
+      color: var(--accent-neon);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .brand-logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--text-main);
+    }
+
+    .brand-logo span {
+      color: var(--accent-neon);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-neon);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      font-weight: 700;
+      border-radius: var(--radius);
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background-color: var(--accent-neon);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-neon-hover);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-neon);
+      color: var(--accent-neon);
+    }
+
+    .btn-whatsapp {
+      background-color: #25D366;
+      color: #000;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #128C7E;
+      box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+    }
+
+    /* Product Section */
+    .product-section {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 40px;
+      margin: 40px 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    /* Image Gallery */
+    .image-gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, var(--bg-input) 0%, var(--bg-dark) 100%);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .main-image:hover {
+      border-color: var(--accent-neon);
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
+    }
+
+    .main-image img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .thumbnail-container {
+      display: flex;
+      gap: 10px;
+    }
+
+    .thumbnail {
+      width: 80px;
+      height: 80px;
+      background: var(--bg-input);
+      border: 2px solid var(--border-color);
+      border-radius: var(--radius);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .thumbnail:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-neon);
+    }
+
+    .thumbnail.active {
+      border-color: var(--accent-neon);
+      box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+    }
+
+    .thumbnail svg {
+      width: 50px;
+      height: 50px;
+      fill: var(--text-muted);
+    }
+
+    /* Product Details */
+    .product-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .product-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-main);
+      text-transform: uppercase;
+    }
+
+    .product-price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--accent-neon);
+    }
+
+    .badge {
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: inline-block;
+    }
+
+    .badge-new {
+      background: rgba(0, 255, 102, 0.15);
+      color: var(--accent-neon);
+      border: 1px solid var(--accent-neon);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .spec-item {
+      background: var(--bg-input);
+      padding: 15px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .spec-item:hover {
+      border-color: var(--accent-neon);
+      transform: translateY(-2px);
+    }
+
+    .spec-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .spec-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .product-description {
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-top: 20px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .navbar { flex-direction: column; gap: 15px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .specs-grid { grid-template-columns: 1fr; }
+      .action-buttons { flex-direction: column; }
+      .main-image { height: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header / Navbar -->
+    <header class="navbar">
+      <div class="brand-logo">PADEL<span>X</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#therapist">Padel Therapist</a></li>
+        <li><a href="index.html#marketplace">Marketplace</a></li>
+        <li><a href="index.html#sell">Sell Racket</a></li>
+      </ul>
+    </header>
+
+    <!-- Product Detail Section -->
+    <section class="product-section">
+      <div class="product-grid">
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+          <div class="main-image" id="mainImage">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="50" cy="50" rx="35" ry="45" fill="none" stroke="#00ff66" stroke-width="2"/>
+              <line x1="50" y1="5" x2="50" y2="95" stroke="#00ff66" stroke-width="2"/>
+              <circle cx="50" cy="50" r="8" fill="#00ff66"/>
+            </svg>
+          </div>
+          <div class="thumbnail-container">
+            <div class="thumbnail active" onclick="changeImage(0)">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="50" cy="50" rx="35" ry="45" fill="none" stroke="#a0a0a0" stroke-width="2"/>
+                <line x1="50" y1="5" x2="50" y2="95" stroke="#a0a0a0" stroke-width="2"/>
+                <circle cx="50" cy="50" r="8" fill="#a0a0a0"/>
+              </svg>
+            </div>
+            <div class="thumbnail" onclick="changeImage(1)">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="50" cy="50" rx="35" ry="45" fill="none" stroke="#a0a0a0" stroke-width="2"/>
+                <line x1="50" y1="5" x2="50" y2="95" stroke="#a0a0a0" stroke-width="2"/>
+                <circle cx="50" cy="50" r="8" fill="#a0a0a0"/>
+              </svg>
+            </div>
+            <div class="thumbnail" onclick="changeImage(2)">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="50" cy="50" rx="35" ry="45" fill="none" stroke="#a0a0a0" stroke-width="2"/>
+                <line x1="50" y1="5" x2="50" y2="95" stroke="#a0a0a0" stroke-width="2"/>
+                <circle cx="50" cy="50" r="8" fill="#a0a0a0"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+          <div>
+            <span class="badge badge-new">Brand New</span>
+          </div>
+          <h1 class="product-title">Babolat Technical Viper 3.0</h1>
+          <div class="product-price">$349.00</div>
+          
+          <div class="specs-grid">
+            <div class="spec-item">
+              <div class="spec-label">Material</div>
+              <div class="spec-value">12K Carbon</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Shape</div>
+              <div class="spec-value">Diamond</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Weight</div>
+              <div class="spec-value">345-355g</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Balance</div>
+              <div class="spec-value">High</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Core</div>
+              <div class="spec-value">EVA Soft</div>
+            </div>
+            <div class="spec-item">
+              <div class="spec-label">Surface</div>
+              <div class="spec-value">3D Spin+</div>
+            </div>
+          </div>
+
+          <p class="product-description">
+            The Babolat Technical Viper 3.0 is designed for advanced players seeking maximum power and spin. 
+            Featuring 12K carbon construction for explosive shots and the innovative 3D Spin+ surface technology 
+            for enhanced ball control. The diamond shape and high balance provide exceptional power while 
+            maintaining precision.
+          </p>
+
+          <div class="action-buttons">
+            <a href="https://wa.me/1234567890?text=I'm interested in the Babolat Technical Viper 3.0 for $349.00" target="_blank" class="btn btn-whatsapp">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+              Buy via WhatsApp
+            </a>
+            <a href="index.html#marketplace" class="btn btn-secondary">Back to Marketplace</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 PadelX & Padel Therapist. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function changeImage(index) {
+      const thumbnails = document.querySelectorAll('.thumbnail');
+      const mainImage = document.getElementById('mainImage');
+      
+      // Update active thumbnail
+      thumbnails.forEach((thumb, i) => {
+        if (i === index) {
+          thumb.classList.add('active');
+        } else {
+          thumb.classList.remove('active');
+        }
+      });
+
+      // Update main image (in a real implementation, this would change the actual image)
+      // For this demo, we'll add a subtle animation effect
+      mainImage.style.opacity = '0.5';
+      setTimeout(() => {
+        mainImage.style.opacity = '1';
+      }, 150);
+    }
+  </script>
+
+</body>
+</html>
