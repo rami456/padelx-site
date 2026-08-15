@@ -631,7 +631,7 @@
   <script>
     // Rackets Data Object
     const racketsData = {
-      'babolat-viper': {
+      'viper-3': {
         title: 'Babolat Technical Viper 3.0',
         price: '$349.00',
         badge: 'Brand New',
@@ -648,7 +648,7 @@
         description: 'The Babolat Technical Viper 3.0 is designed for advanced players seeking maximum power and spin. Featuring 12K carbon construction for explosive shots and the innovative 3D Spin+ surface technology for enhanced ball control. The diamond shape and high balance provide exceptional power while maintaining precision.',
         whatsappMessage: 'Hello%20PadelX,%20I%20am%20interested%20in%20buying%20the%20Babolat%20Technical%20Viper%203.0%20for%20$349.00'
       },
-      'nox-at10': {
+      'hack-03': {
         title: 'Nox AT10 Luxury Genius 18K',
         price: '$185.00',
         badge: 'Refurbished',
@@ -665,7 +665,7 @@
         description: 'The Nox AT10 Luxury Genius 18K is a premium teardrop-shaped racket featuring 18K carbon construction. Expertly refurbished to like-new condition with carbon re-lamination for structural integrity. Perfect for players seeking balance between power and control.',
         whatsappMessage: 'Hello%20PadelX,%20I%20am%20interested%20in%20buying%20the%20Nox%20AT10%20Luxury%20Genius%2018K%20for%20$185.00'
       },
-      'bullpadel-hack': {
+      'metalbone-32': {
         title: 'Bullpadel Hack 04',
         price: '$210.00',
         badge: 'Like New',
@@ -687,7 +687,7 @@
     // Dynamic Product Rendering
     function loadProduct() {
       const urlParams = new URLSearchParams(window.location.search);
-      const productId = urlParams.get('id') || 'babolat-viper'; // Default to first racket
+      const productId = urlParams.get('id') || 'viper-3'; // Default to first racket
       const product = racketsData[productId];
 
       if (product) {
