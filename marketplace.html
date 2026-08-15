@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PadelX — Marketplace & Padel Therapist</title>
+  <title>PadelX Marketplace — Buy & Sell Rackets</title>
   <style>
     /* ==========================================================================
-       PadelX & Padel Therapist — Futuristic Dark Mode CSS
+       PadelX Marketplace — Futuristic Dark Mode CSS
        ========================================================================== */
     :root {
       --bg-dark: #121212;
@@ -138,73 +138,25 @@
       display: block;
     }
 
-    /* Hero Section */
-    .hero {
+    /* Page Title */
+    .page-title {
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
       background: radial-gradient(circle at center, rgba(0,255,102,0.08) 0%, rgba(18,18,18,0) 70%);
       margin-bottom: 40px;
     }
 
-    .hero h1 {
-      font-size: clamp(1.8rem, 5vw, 3rem);
+    .page-title h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
       font-weight: 900;
       margin-bottom: 15px;
       text-transform: uppercase;
+      color: var(--text-main);
     }
 
-    .hero p {
+    .page-title p {
       color: var(--text-muted);
       font-size: 1.2rem;
-      margin-bottom: 30px;
-    }
-
-    .btn-group {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      font-weight: 700;
-      border-radius: var(--radius);
-      text-transform: uppercase;
-      cursor: pointer;
-      border: none;
-      font-size: 0.9rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
-    }
-
-    .btn:active {
-      transform: scale(0.97);
-    }
-
-    .btn-primary {
-      background-color: var(--accent-neon);
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      background-color: var(--accent-neon-hover);
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--accent-neon);
-      color: var(--accent-neon);
     }
 
     /* Sections */
@@ -224,50 +176,6 @@
       text-transform: uppercase;
       border-bottom: 2px solid var(--border-color);
       padding-bottom: 10px;
-    }
-
-    /* Forms */
-    .form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
-    .form-group.full-width {
-      grid-column: span 2;
-    }
-
-    label {
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    input, select, textarea {
-      background-color: var(--bg-input);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      padding: 12px;
-      color: var(--text-main);
-      font-size: 1rem;
-      font-family: inherit;
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-
-    input:focus, select:focus, textarea:focus {
-      outline: none;
-      border-color: var(--accent-neon);
     }
 
     /* Marketplace Grid */
@@ -490,25 +398,9 @@
         gap: 15px;
       }
       
-      .hero { padding: 60px 16px; }
-      .hero p { font-size: 1rem; }
-      
-      .form-grid { grid-template-columns: 1fr; }
-      .form-group.full-width { grid-column: span 1; }
-      .btn-group { flex-direction: column; }
-      
-      /* Touch targets */
-      .btn, input, select, textarea {
-        min-height: 48px;
-        font-size: 16px;
-        padding: 12px 14px;
-      }
-      
-      .nav-links a {
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-      }
+      .page-title { padding: 40px 16px; }
+      .page-title h1 { font-size: 1.8rem; }
+      .page-title p { font-size: 1rem; }
       
       /* Mobile form layout */
       .filter-bar {
@@ -521,9 +413,10 @@
         max-width: 100%;
       }
       
-      textarea {
-        min-height: 100px;
-        max-height: 200px;
+      .filter-search input, .filter-select {
+        min-height: 48px;
+        font-size: 16px;
+        padding: 12px 14px;
       }
       
       /* Mobile grid layout */
@@ -581,8 +474,8 @@
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="marketplace.html">Marketplace</a></li>
-        <li><a href="#therapist">Padel Therapist</a></li>
-        <li><a href="#sell">Sell Racket</a></li>
+        <li><a href="index.html#therapist">Padel Therapist</a></li>
+        <li><a href="index.html#sell">Sell Racket</a></li>
       </ul>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -602,105 +495,97 @@
       </button>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
-      <h1>PadelX — Your Ultimate Padel Hub</h1>
-      <p>Buy, Sell, and Repair Padel Rackets All in One Place.</p>
-      <div class="btn-group">
-        <a href="marketplace.html" class="btn btn-primary">Shop Rackets</a>
-        <a href="#therapist" class="btn btn-secondary">Request a Repair</a>
-      </div>
+    <!-- Page Title -->
+    <section class="page-title">
+      <h1>PADELX MARKETPLACE</h1>
+      <p>Buy & Sell Premium Padel Rackets</p>
     </section>
 
-    <!-- Section 1: Padel Therapist -->
-    <section id="therapist" class="section-card">
-      <h2 class="section-title">Padel Therapist — Racket Repair Portal</h2>
-      <p>Cracked your carbon frame? Don't toss it out. We structurally re-laminate broken padel rackets with structural carbon fiber and precision epoxy to full playability.</p>
-      
-      <form style="margin-top: 20px;" onsubmit="event.preventDefault(); window.location.href='https://wa.me/96176186340?text=Hello%20PadelX,%20I%20would%20like%20to%20request%20a%20repair%20estimate';">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" placeholder="John Doe" required>
+    <!-- Marketplace Section -->
+    <section class="section-card">
+      <h2 class="section-title">Available Rackets</h2>
+      <div class="filter-bar">
+        <div class="filter-search">
+          <input type="text" id="searchInput" placeholder="Search rackets..." onkeyup="filterProducts()">
+        </div>
+        <select class="filter-select" id="brandFilter" onchange="filterProducts()">
+          <option value="">All Brands</option>
+          <option value="babolat">Babolat</option>
+          <option value="nox">Nox</option>
+          <option value="bullpadel">Bullpadel</option>
+          <option value="adidas">Adidas</option>
+        </select>
+        <select class="filter-select" id="conditionFilter" onchange="filterProducts()">
+          <option value="">All Conditions</option>
+          <option value="new">Brand New</option>
+          <option value="refurbished">Refurbished</option>
+          <option value="used">Used</option>
+        </select>
+      </div>
+      <div class="marketplace-grid">
+        <!-- Product Card 1 -->
+        <a href="product.html" class="product-card" data-brand="babolat" data-condition="new">
+          <span class="product-badge badge-new">New Arrival</span>
+          <div class="product-image-container">
+            <svg class="product-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="60" height="40" rx="5" fill="#00ff66" opacity="0.3"/>
+              <rect x="25" y="35" width="50" height="30" rx="3" fill="#00ff66" opacity="0.5"/>
+              <circle cx="50" cy="50" r="10" fill="#00ff66"/>
+            </svg>
           </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="john@example.com" required>
-          </div>
-          <div class="form-group full-width">
-            <label for="racket">Racket Brand & Model</label>
-            <input type="text" id="racket" placeholder="e.g. Bullpadel Vertex 03, Nox AT10" required>
-          </div>
-          <div class="form-group">
-            <label for="damageLevel">Damage Severity</label>
-            <select id="damageLevel" onchange="updateRepairCost()">
-              <option value="">Select damage level</option>
-              <option value="minor">Minor Surface Scratch</option>
-              <option value="structural">Structural Crack</option>
-              <option value="broken">Broken Frame</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Estimated Repair Cost</label>
-            <div id="repairCost" style="font-size: 1.2rem; font-weight: 700; color: var(--text-muted); padding: 12px; background: var(--bg-input); border-radius: var(--radius); border: 1px solid var(--border-color);">
-              Select damage level
+          <div class="product-content">
+            <div class="product-brand">Babolat</div>
+            <h3 class="product-title">Technical Viper 3.0</h3>
+            <div class="product-specs">12K Carbon • Diamond Shape</div>
+            <div class="product-footer">
+              <span class="product-price">$349</span>
+              <button class="btn-view-details">View Details</button>
             </div>
           </div>
-          <div class="form-group full-width">
-            <label for="damage">Damage Description</label>
-            <textarea id="damage" rows="3" placeholder="Describe where the crack is, how deep it looks, or if it sounds hollow when hitting..."></textarea>
-          </div>
-          <div class="form-group full-width">
-            <label for="photos">Upload Damage Photos</label>
-            <input type="file" id="photos" accept="image/*" multiple required>
-          </div>
-          <div class="form-group full-width">
-            <button type="submit" class="btn btn-primary">Get Free Repair Estimate</button>
-          </div>
-        </div>
-      </form>
-    </section>
+        </a>
 
-    <!-- Section 2: Marketplace Teaser -->
-    <section class="section-card" style="text-align: center; padding: 60px 40px; background: linear-gradient(135deg, var(--bg-card) 0%, rgba(0,255,102,0.05) 100%);">
-      <h2 class="section-title" style="border: none; margin-bottom: 20px;">Explore Our Collection</h2>
-      <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px;">
-        Discover premium padel rackets from top brands. From brand-new professional models to expertly refurbished options, find your perfect match.
-      </p>
-      <a href="marketplace.html" class="btn btn-primary" style="font-size: 1rem; padding: 14px 32px;">View All Rackets</a>
-    </section>
+        <!-- Product Card 2 -->
+        <a href="product.html" class="product-card" data-brand="nox" data-condition="refurbished">
+          <span class="product-badge badge-refurbished">Best Seller</span>
+          <div class="product-image-container">
+            <svg class="product-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="60" height="40" rx="5" fill="#ffaa00" opacity="0.3"/>
+              <rect x="25" y="35" width="50" height="30" rx="3" fill="#ffaa00" opacity="0.5"/>
+              <circle cx="50" cy="50" r="10" fill="#ffaa00"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div class="product-brand">Nox</div>
+            <h3 class="product-title">AT10 Luxury Genius 18K</h3>
+            <div class="product-specs">Carbon Re-laminated • Teardrop</div>
+            <div class="product-footer">
+              <span class="product-price">$185</span>
+              <button class="btn-view-details">View Details</button>
+            </div>
+          </div>
+        </a>
 
-    <!-- Section 3: Sell Your Racket -->
-    <section id="sell" class="section-card">
-      <h2 class="section-title">Sell Your Racket to Us</h2>
-      <form onsubmit="event.preventDefault(); alert('Racket submission received! We will inspect your photos and email you an offer.');">
-        <div class="form-grid">
-          <div class="form-group">
-            <label for="sell-racket">Racket Brand & Model</label>
-            <input type="text" id="sell-racket" placeholder="e.g. Adidas Metalbone 3.2" required>
+        <!-- Product Card 3 -->
+        <a href="product.html" class="product-card" data-brand="bullpadel" data-condition="used">
+          <span class="product-badge badge-used">Like New</span>
+          <div class="product-image-container">
+            <svg class="product-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="60" height="40" rx="5" fill="#a0a0a0" opacity="0.3"/>
+              <rect x="25" y="35" width="50" height="30" rx="3" fill="#a0a0a0" opacity="0.5"/>
+              <circle cx="50" cy="50" r="10" fill="#a0a0a0"/>
+            </svg>
           </div>
-          <div class="form-group">
-            <label for="price">Asking Price ($)</label>
-            <input type="number" id="price" placeholder="150" required>
+          <div class="product-content">
+            <div class="product-brand">Bullpadel</div>
+            <h3 class="product-title">Hack 04</h3>
+            <div class="product-specs">Diamond Shape • Light Scrapes</div>
+            <div class="product-footer">
+              <span class="product-price">$210</span>
+              <button class="btn-view-details">View Details</button>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="condition">Racket Condition</label>
-            <select id="condition">
-              <option>Like New</option>
-              <option>Lightly Used</option>
-              <option>Well Used</option>
-              <option>Cracked / Needs Repair</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="sell-photos">Upload Photos</label>
-            <input type="file" id="sell-photos" accept="image/*" multiple required>
-          </div>
-          <div class="form-group full-width">
-            <button type="submit" class="btn btn-secondary">Submit Trade-In Request</button>
-          </div>
-        </div>
-      </form>
+        </a>
+      </div>
     </section>
 
     <!-- Footer -->
@@ -809,21 +694,6 @@
           product.style.display = 'none';
         }
       });
-    }
-
-    // Damage Level Selector with Cost Estimates
-    function updateRepairCost() {
-      const damageLevel = document.getElementById('damageLevel').value;
-      const costDisplay = document.getElementById('repairCost');
-      
-      const costRanges = {
-        'minor': '$25 - $45',
-        'structural': '$50 - $85',
-        'broken': '$90 - $150'
-      };
-      
-      costDisplay.textContent = costRanges[damageLevel] || 'Select damage level';
-      costDisplay.style.color = 'var(--accent-neon)';
     }
   </script>
 
