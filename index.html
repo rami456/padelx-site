@@ -218,54 +218,136 @@
       border-color: var(--accent-neon);
     }
 
-    /* Marketplace Table */
-    .table-responsive {
-      overflow-x: auto;
+    /* Marketplace Grid */
+    .marketplace-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
       margin-top: 20px;
     }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    th, td {
-      padding: 16px;
-      border-bottom: 1px solid var(--border-color);
+    /* Product Card */
+    .product-card {
+      background-color: #1E1E1E;
+      border: 1px solid #2A2A2A;
+      border-radius: 12px;
+      overflow: hidden;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
     }
 
-    th {
-      background-color: var(--bg-input);
-      color: var(--text-muted);
-      font-size: 0.8rem;
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 255, 102, 0.15);
+      border-color: var(--accent-neon);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
       text-transform: uppercase;
+      z-index: 2;
     }
 
-    tbody tr {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    .badge-new { background: rgba(0, 255, 102, 0.2); color: var(--accent-neon); border: 1px solid var(--accent-neon); }
+    .badge-refurbished { background: rgba(255, 170, 0, 0.2); color: #ffaa00; border: 1px solid #ffaa00; }
+    .badge-used { background: rgba(255, 255, 255, 0.15); color: var(--text-muted); border: 1px solid var(--border-color); }
+
+    .product-image-container {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
-    tbody tr:hover {
-      background-color: rgba(255, 255, 255, 0.05);
+    .product-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    tbody tr:hover td:first-child {
-      border-left: 3px solid var(--accent-neon);
+    .product-card:hover .product-image {
+      transform: scale(1.05);
     }
 
-    .badge {
-      padding: 4px 8px;
-      border-radius: 4px;
+    .product-content {
+      padding: 20px;
+    }
+
+    .product-brand {
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
     }
 
-    .badge-new { background: rgba(0, 255, 102, 0.15); color: var(--accent-neon); border: 1px solid var(--accent-neon); }
-    .badge-refurbished { background: rgba(255, 170, 0, 0.15); color: #ffaa00; border: 1px solid #ffaa00; }
-    .badge-used { background: rgba(255, 255, 255, 0.1); color: var(--text-muted); border: 1px solid var(--border-color); }
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .product-specs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .product-specs::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent-neon);
+      border-radius: 50%;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent-neon);
+    }
+
+    .btn-view-details {
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 2px solid var(--accent-neon);
+      background: transparent;
+      color: var(--accent-neon);
+      border-radius: 6px;
+      text-transform: uppercase;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .btn-view-details:hover {
+      background: var(--accent-neon);
+      color: #000;
+      transform: translateY(-2px);
+    }
 
     /* Footer */
     footer {
@@ -276,7 +358,14 @@
       font-size: 0.9rem;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1023px) and (min-width: 768px) {
+      .marketplace-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 767px) {
       body { padding: 0 16px; }
       
       .navbar { 
@@ -309,67 +398,44 @@
         align-items: center;
       }
       
-      /* Mobile card layout for marketplace */
-      .table-responsive {
-        overflow-x: visible;
+      /* Mobile grid layout */
+      .marketplace-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
       
-      table, thead, tbody, th, td, tr {
-        display: block;
+      .product-image-container {
+        height: 140px;
       }
       
-      thead { display: none; }
-      
-      tbody tr {
-        background-color: var(--bg-card);
-        border: 1px solid #2a2a2a;
-        border-radius: var(--radius);
-        margin-bottom: 16px;
-        padding: 16px;
-        cursor: pointer;
+      .product-content {
+        padding: 12px;
       }
       
-      tbody tr:hover {
-        background-color: var(--bg-card);
+      .product-brand {
+        font-size: 0.65rem;
       }
       
-      tbody tr:hover td:first-child {
-        border-left: none;
-      }
-      
-      td {
-        padding: 8px 0;
-        border-bottom: none;
-        text-align: left;
-      }
-      
-      td:first-child {
-        font-size: 1.1rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-      }
-      
-      td:nth-child(2) {
-        margin-bottom: 8px;
-      }
-      
-      td:nth-child(3) {
-        color: var(--text-muted);
+      .product-title {
         font-size: 0.9rem;
-        margin-bottom: 8px;
       }
       
-      td:nth-child(4) {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: var(--accent-neon);
-        margin-bottom: 12px;
+      .product-specs {
+        font-size: 0.75rem;
       }
       
-      td:last-child .btn {
-        width: 100%;
-        text-align: center;
-        min-height: 48px;
+      .product-price {
+        font-size: 1.2rem;
+      }
+      
+      .btn-view-details {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+      }
+      
+      .product-badge {
+        padding: 4px 8px;
+        font-size: 0.6rem;
       }
       
       .section-card {
@@ -439,41 +505,69 @@
     <!-- Section 2: Marketplace -->
     <section id="marketplace" class="section-card">
       <h2 class="section-title">PadelX Marketplace</h2>
-      <div class="table-responsive">
-        <table>
-          <thead>
-            <tr>
-              <th>Racket Model</th>
-              <th>Condition</th>
-              <th>Specs</th>
-              <th>Price</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr onclick="window.location.href='product.html'" style="cursor: pointer;">
-              <td><strong><a href="product.html" style="color: var(--text-main);">Babolat Technical Viper 3.0</a></strong></td>
-              <td><span class="badge badge-new">Brand New</span></td>
-              <td>Diamond Shape, 12K Carbon</td>
-              <td><strong>$349.00</strong></td>
-              <td><a href="product.html" class="btn btn-primary">View Details</a></td>
-            </tr>
-            <tr onclick="window.location.href='product.html'" style="cursor: pointer;">
-              <td><strong><a href="product.html" style="color: var(--text-main);">Nox AT10 Luxury Genius 18K</a></strong></td>
-              <td><span class="badge badge-refurbished">Refurbished</span></td>
-              <td>Teardrop, Carbon Re-laminated</td>
-              <td><strong>$185.00</strong></td>
-              <td><a href="product.html" class="btn btn-primary">View Details</a></td>
-            </tr>
-            <tr onclick="window.location.href='product.html'" style="cursor: pointer;">
-              <td><strong><a href="product.html" style="color: var(--text-main);">Bullpadel Hack 04</a></strong></td>
-              <td><span class="badge badge-used">Used - Excellent</span></td>
-              <td>Diamond Shape, Light Scrapes</td>
-              <td><strong>$210.00</strong></td>
-              <td><a href="product.html" class="btn btn-primary">View Details</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="marketplace-grid">
+        <!-- Product Card 1 -->
+        <a href="product.html" class="product-card">
+          <span class="product-badge badge-new">New Arrival</span>
+          <div class="product-image-container">
+            <svg class="product-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="60" height="40" rx="5" fill="#00ff66" opacity="0.3"/>
+              <rect x="25" y="35" width="50" height="30" rx="3" fill="#00ff66" opacity="0.5"/>
+              <circle cx="50" cy="50" r="10" fill="#00ff66"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div class="product-brand">Babolat</div>
+            <h3 class="product-title">Technical Viper 3.0</h3>
+            <div class="product-specs">12K Carbon • Diamond Shape</div>
+            <div class="product-footer">
+              <span class="product-price">$349</span>
+              <button class="btn-view-details">View Details</button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product Card 2 -->
+        <a href="product.html" class="product-card">
+          <span class="product-badge badge-refurbished">Best Seller</span>
+          <div class="product-image-container">
+            <svg class="product-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="60" height="40" rx="5" fill="#ffaa00" opacity="0.3"/>
+              <rect x="25" y="35" width="50" height="30" rx="3" fill="#ffaa00" opacity="0.5"/>
+              <circle cx="50" cy="50" r="10" fill="#ffaa00"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div class="product-brand">Nox</div>
+            <h3 class="product-title">AT10 Luxury Genius 18K</h3>
+            <div class="product-specs">Carbon Re-laminated • Teardrop</div>
+            <div class="product-footer">
+              <span class="product-price">$185</span>
+              <button class="btn-view-details">View Details</button>
+            </div>
+          </div>
+        </a>
+
+        <!-- Product Card 3 -->
+        <a href="product.html" class="product-card">
+          <span class="product-badge badge-used">Like New</span>
+          <div class="product-image-container">
+            <svg class="product-image" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="20" y="30" width="60" height="40" rx="5" fill="#a0a0a0" opacity="0.3"/>
+              <rect x="25" y="35" width="50" height="30" rx="3" fill="#a0a0a0" opacity="0.5"/>
+              <circle cx="50" cy="50" r="10" fill="#a0a0a0"/>
+            </svg>
+          </div>
+          <div class="product-content">
+            <div class="product-brand">Bullpadel</div>
+            <h3 class="product-title">Hack 04</h3>
+            <div class="product-specs">Diamond Shape • Light Scrapes</div>
+            <div class="product-footer">
+              <span class="product-price">$210</span>
+              <button class="btn-view-details">View Details</button>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
