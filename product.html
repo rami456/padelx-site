@@ -629,6 +629,110 @@
   </style>
 
   <script>
+    // Rackets Data Object
+    const racketsData = {
+      'babolat-viper': {
+        title: 'Babolat Technical Viper 3.0',
+        price: '$349.00',
+        badge: 'Brand New',
+        badgeClass: 'badge-new',
+        image: '', // Add image path if available
+        specs: {
+          material: '12K Carbon',
+          shape: 'Diamond',
+          weight: '345-355g',
+          balance: 'High',
+          core: 'EVA Soft',
+          surface: '3D Spin+'
+        },
+        description: 'The Babolat Technical Viper 3.0 is designed for advanced players seeking maximum power and spin. Featuring 12K carbon construction for explosive shots and the innovative 3D Spin+ surface technology for enhanced ball control. The diamond shape and high balance provide exceptional power while maintaining precision.',
+        whatsappMessage: 'Hello%20PadelX,%20I%20am%20interested%20in%20buying%20the%20Babolat%20Technical%20Viper%203.0%20for%20$349.00'
+      },
+      'nox-at10': {
+        title: 'Nox AT10 Luxury Genius 18K',
+        price: '$185.00',
+        badge: 'Refurbished',
+        badgeClass: 'badge-refurbished',
+        image: 'noxat10.jpg',
+        specs: {
+          material: '18K Carbon',
+          shape: 'Teardrop',
+          weight: '360-370g',
+          balance: 'Medium',
+          core: 'EVA Soft',
+          surface: 'Carbon Re-laminated'
+        },
+        description: 'The Nox AT10 Luxury Genius 18K is a premium teardrop-shaped racket featuring 18K carbon construction. Expertly refurbished to like-new condition with carbon re-lamination for structural integrity. Perfect for players seeking balance between power and control.',
+        whatsappMessage: 'Hello%20PadelX,%20I%20am%20interested%20in%20buying%20the%20Nox%20AT10%20Luxury%20Genius%2018K%20for%20$185.00'
+      },
+      'bullpadel-hack': {
+        title: 'Bullpadel Hack 04',
+        price: '$210.00',
+        badge: 'Like New',
+        badgeClass: 'badge-used',
+        image: '', // Add image path if available
+        specs: {
+          material: 'Carbon Fiber',
+          shape: 'Diamond',
+          weight: '350-360g',
+          balance: 'High',
+          core: 'MultiEVA',
+          surface: 'Light Scrapes'
+        },
+        description: 'The Bullpadel Hack 04 is a powerful diamond-shaped racket designed for aggressive players. Features carbon fiber construction with MultiEVA core for excellent power transmission. In like-new condition with only light surface scrapes, fully playable and structurally sound.',
+        whatsappMessage: 'Hello%20PadelX,%20I%20am%20interested%20in%20buying%20the%20Bullpadel%20Hack%2004%20for%20$210.00'
+      }
+    };
+
+    // Dynamic Product Rendering
+    function loadProduct() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'babolat-viper'; // Default to first racket
+      const product = racketsData[productId];
+
+      if (product) {
+        // Update page title
+        document.title = `${product.title} — PadelX`;
+
+        // Update badge
+        const badgeElement = document.getElementById('productBadge');
+        badgeElement.textContent = product.badge;
+        badgeElement.className = `badge ${product.badgeClass}`;
+
+        // Update title and price
+        document.getElementById('productTitle').textContent = product.title;
+        document.getElementById('productPrice').textContent = product.price;
+
+        // Update specs
+        document.getElementById('specMaterial').textContent = product.specs.material;
+        document.getElementById('specShape').textContent = product.specs.shape;
+        document.getElementById('specWeight').textContent = product.specs.weight;
+        document.getElementById('specBalance').textContent = product.specs.balance;
+        document.getElementById('specCore').textContent = product.specs.core;
+        document.getElementById('specSurface').textContent = product.specs.surface;
+
+        // Update description
+        document.getElementById('productDescription').textContent = product.description;
+
+        // Update WhatsApp link
+        const whatsappLink = document.getElementById('whatsappLink');
+        whatsappLink.href = `https://wa.me/96176186340?text=${product.whatsappMessage}`;
+
+        // Update product image if available
+        const mainProductImage = document.getElementById('mainProductImage');
+        const placeholderImage = document.getElementById('placeholderImage');
+        
+        if (product.image) {
+          mainProductImage.src = product.image;
+          mainProductImage.style.display = 'block';
+          placeholderImage.style.display = 'none';
+        } else {
+          mainProductImage.style.display = 'none';
+          placeholderImage.style.display = 'block';
+        }
+      }
+    }
+
     // Theme Toggle with localStorage persistence
     function toggleTheme() {
       const html = document.documentElement;
@@ -665,6 +769,9 @@
         mainImage.style.opacity = '1';
       }, 150);
     }
+
+    // Load product data on page load
+    document.addEventListener('DOMContentLoaded', loadProduct);
   </script>
 
 </body>
