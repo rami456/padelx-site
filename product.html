@@ -194,6 +194,19 @@
     }
 
     /* Product Section */
+    input, select, textarea {
+      background-color: var(--bg-input);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      padding: 12px;
+      color: var(--text-main);
+      font-size: 1rem;
+      font-family: inherit;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
     .product-section {
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
@@ -394,6 +407,13 @@
       /* Touch targets */
       .btn, input, select, textarea {
         min-height: 48px;
+        font-size: 16px;
+        padding: 12px 14px;
+      }
+      
+      textarea {
+        min-height: 100px;
+        max-height: 200px;
       }
       
       .product-section {
